@@ -1,0 +1,21 @@
+@use "../config" as cf;
+
+.receipts-maindiv-card {
+    padding: 1% 2%;
+    border: 1px solid red;
+    background-color: cf.$white-color;
+    margin: 1% 1% 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .expand {
+        width: 30rem;
+        overflow: auto;
+        height: 20rem;
+        // &::-webkit-scrollbar{
+        //     display: none;
+        // }
+    }
+}

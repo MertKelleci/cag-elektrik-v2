@@ -1,0 +1,15 @@
+{
+    "appId":"com.MertKelleci.cag-elektrik",
+    "files":["dist-electron","public","src"],
+    "icon":"./public/icon.png",
+    "mac": {
+        "target":"dmg"
+    },
+    "linux":{
+        "target":"AppImage",
+        "category":"Utility"
+    },
+    "win":{
+        "target": ["portable", "msi"]
+    }
+}
