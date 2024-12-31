@@ -39,7 +39,7 @@ const createProp = (cart, currentUser, info) => {
     orientationLandscape: false,
     compress: true,
     logo: {
-      src: "../../public/icon.png",
+      src: "/icon.png",
       type: "PNG", //optional, when src= data:uri (nodejs case)
       width: 53.33, //aspect ratio = width/height
       height: 26.66,

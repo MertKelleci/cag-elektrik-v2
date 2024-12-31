@@ -61,7 +61,7 @@ ipcMain.handle("getCompInfo", async (e, data) => {
 
 ipcMain.handle("paginatedQuery", async (e, data) => {
   const { collectionName, lastdoc } = data;
-  let items = await paginatedQuery(collectionName, lastdoc);
+  const items = await paginatedQuery(collectionName, lastdoc);
   return items;
 });
 

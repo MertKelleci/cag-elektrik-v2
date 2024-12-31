@@ -141,7 +141,7 @@ export const itemSold = async (id, amount) => {
       return item.data();
     })
     .catch((err) => {
-      console.log("Ben allahı sikik bir piç.im çünkü: " + err);
+      console.log("Firebase.js itemSoled function error: " + err);
     });
   updateDoc(docRef, { stored: flag.stored - amount })
     .then(() => {
@@ -153,7 +153,7 @@ export const itemSold = async (id, amount) => {
 };
 export const paginatedQuery = async (collectionName, lastdoc) => {
   let q;
-  if (collectionName === "receipts") {
+  if (collectionName == "receipts") {
     let lastdocSnapshot = null;
     if (lastdoc != null) {
       const docRef = doc(db, "receipts", lastdoc.id);
@@ -215,14 +215,18 @@ export const deleteItem = async (itemID, collectionName) => {
 };
 export const login = async (email, password) => {
   const user = await signInWithEmailAndPassword(auth, email, password)
-    .then(async (cred) => {
-      const flag = await getUserInfo(cred.user.uid);
-      return { status: 200, message: "Giriş Başarılı", user: flag };
+    .then(async (userCredential) => {
+      const flag = await getUserInfo(userCredential.user.uid);
+      return {
+        status: 200,
+        message: "Giriş Başarılı",
+        user: flag,
+      };
     })
     .catch((err) => {
       return {
-        status: 400,
-        message: "Giriş Başarısız: " + err,
+        status: err.code,
+        message: "Giriş Başarısız: " + err.message,
         user: null,
       };
     });
@@ -263,16 +267,3 @@ export const searchWithDates = async (fDate, lDate) => {
   });
   return items;
 };
-// export default {
-//   getSnapshot,
-//   addItem,
-//   paginatedQuery,
-//   getDiscount,
-//   querybyParameter,
-//   updateItem,
-//   deleteItem,
-//   login,
-//   logout,
-//   addReceipt,
-//   searchWithDates,
-// };

@@ -31,9 +31,9 @@ const SideBar = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    if (currentUser?.authLvl === 0) {
+    if (currentUser?.authLvl == 0) {
       setRoutes(routes0);
-    } else if (currentUser?.authLvl === 1) {
+    } else if (currentUser?.authLvl == 1) {
       setRoutes(routes1);
     } else {
       setRoutes([]);
