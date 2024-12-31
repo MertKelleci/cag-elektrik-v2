@@ -37,6 +37,7 @@ const Receipts = () => {
       })
       .then((items) => {
         if (!items.empty) {
+          items.amount = parseInt(items.amout);
           setList([...list, ...items]);
         }
         setLoaded(true);
@@ -53,8 +54,9 @@ const Receipts = () => {
   };
 
   const refreshPage = () => {
-    setLastdoc(lastdoc ? null : {});
+    setLastdoc(null);
     setList([]);
+    setLoaded(false);
   };
 
   const handleSearch = (event) => {
@@ -62,7 +64,7 @@ const Receipts = () => {
       ipcRenderer
         .invoke("querybyParimeter", {
           searchValue: event.target.value.toUpperCase(),
-          sender: "receipts",
+          sender: "Receipts",
         })
         .then((items) => {
           if (items.length > 0) {
@@ -70,6 +72,8 @@ const Receipts = () => {
           }
         });
     } else {
+      console.log("Refreshing the page...");
+
       refreshPage();
     }
   };

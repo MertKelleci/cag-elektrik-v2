@@ -92,7 +92,7 @@ ReceiptComp.propTypes = {
         initPrice: PropTypes.number.isRequired,
         soldPrice: PropTypes.number.isRequired,
         disc: PropTypes.number.isRequired,
-        amount: PropTypes.number.isRequired,
+        amount: PropTypes.string.isRequired,
         totalPrice: PropTypes.number.isRequired,
       }).isRequired
     ).isRequired,

@@ -25,7 +25,6 @@ const ProductComp = ({ item, setSelected, selected, brand, deleteItem }) => {
   useEffect(() => {
     ipcRenderer.invoke("getCompInfo", { brandID }).then((discount) => {
       setDisc(discount);
-      setpPrice((price - (price * disc) / 100).toFixed(2));
     });
   }, []);
 
@@ -37,17 +36,13 @@ const ProductComp = ({ item, setSelected, selected, brand, deleteItem }) => {
     }
   }, [selected]);
 
-  const [pPrice, setpPrice] = useState(
-    (price - (price * disc) / 100).toFixed(2)
-  );
-
   return (
     <tr>
       <th>{name}</th>
       <th>{serial}</th>
       <th>
         {price}₺ {" -> "}
-        {pPrice}₺
+        {(price - (price * disc) / 100).toFixed(2)}₺
       </th>
       <th>{disc}</th>
       <th>{brand?.label}</th>
@@ -85,7 +80,7 @@ const ProductComp = ({ item, setSelected, selected, brand, deleteItem }) => {
 
 ProductComp.propTypes = {
   item: PropTypes.shape({
-    brandID: PropTypes.number.isRequired,
+    brandID: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     serial: PropTypes.string.isRequired,
     stored: PropTypes.number.isRequired,

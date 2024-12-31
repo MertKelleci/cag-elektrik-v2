@@ -69,22 +69,27 @@ export const getSnapshot = async ({ collectionName }) => {
 };
 
 export const querybyParameter = async (searchValue, sender) => {
-  let q1, q2;
+  let q1, q2, q3, q4;
   if (sender === "Receipts") {
-    q1 = query(receiptsRef, where("company", "==", `${searchValue}`));
-    q2 = query(receiptsRef, where("customer", "==", `${searchValue}`));
+    q1 = query(receiptsRef, where("company", "<=", searchValue + "\uf8ff"));
+    q2 = query(receiptsRef, where("customer", "<=", searchValue + "\uf8ff"));
+    q3 = query(receiptsRef, where("company", "<=", "\uf8ff" + searchValue));
+    q4 = query(receiptsRef, where("customer", "<=", "\uf8ff" + searchValue));
   } else if (sender === "EditCompany") {
-    q1 = query(brandsRef, where("serial", "==", `${searchValue}`));
-    q2 = query(brandsRef, where("name", "==", `${searchValue}`));
+    q1 = query(receiptsRef, where("serial", "<=", searchValue + "\uf8ff"));
+    q2 = query(receiptsRef, where("name", "<=", searchValue + "\uf8ff"));
+    q3 = query(receiptsRef, where("serial", "<=", "\uf8ff" + searchValue));
+    q4 = query(receiptsRef, where("name", "<=", "\uf8ff" + searchValue));
   } else {
-    q1 = query(itemsRef, where("serial", "==", `${searchValue}`));
-    q2 = query(itemsRef, where("name", "==", `${searchValue}`));
+    q1 = query(receiptsRef, where("serial", "<=", searchValue + "\uf8ff"));
+    q2 = query(receiptsRef, where("name", "<=", searchValue + "\uf8ff"));
+    q3 = query(receiptsRef, where("serial", "<=", "\uf8ff" + searchValue));
+    q4 = query(receiptsRef, where("name", "<=", "\uf8ff" + searchValue));
   }
 
   const items = [];
   await getDocs(q1).then((snapshot) => {
     snapshot.docs.forEach((doc) => {
-      console.log(doc.data());
       items.push({ ...doc.data(), id: doc.id });
     });
   });
@@ -93,8 +98,20 @@ export const querybyParameter = async (searchValue, sender) => {
       items.push({ ...doc.data(), id: doc.id });
     });
   });
+  await getDocs(q3).then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      items.push({ ...doc.data(), id: doc.id });
+    });
+  });
+  await getDocs(q4).then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      items.push({ ...doc.data(), id: doc.id });
+    });
+  });
+
   return items;
 };
+
 export const addItem = async (item, collectionName) => {
   const q = query(
     refSelect(collectionName),
@@ -154,6 +171,7 @@ export const itemSold = async (id, amount) => {
 export const paginatedQuery = async (collectionName, lastdoc) => {
   let q;
   if (collectionName == "receipts") {
+    console.log("collection name is receipts");
     let lastdocSnapshot = null;
     if (lastdoc != null) {
       const docRef = doc(db, "receipts", lastdoc.id);

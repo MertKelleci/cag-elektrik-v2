@@ -69,15 +69,15 @@ const createProp = (cart, currentUser, info) => {
     },
     contact: {
       label: "Makbuz bilgileri:",
-      name: `Firma: ${info.company}`,
-      address: `Satin Alan: ${info.buyer}`,
-      otherInfo: `Satis Yapan: ${currentUser.name}`,
+      name: "Firma: ${info.company}",
+      address: "Satin Alan: " + info.buyer,
+      otherInfo: "Satis Yapan: " + currentUser.name,
     },
     invoice: {
       label: "Makbuz #: ",
       num: 19,
-      invDate: `Islem Tarihi: ${now}`,
-      invGenDate: `Cikti Tarihi: ${now}`,
+      invDate: "Islem Tarihi: " + now,
+      invGenDate: "Cikti Tarihi: " + now,
       headerBorder: false,
       tableBodyBorder: false,
       header: [
@@ -210,6 +210,7 @@ const Finalize = () => {
           </thead>
           <tbody>
             {cart.map((item, index) => {
+              item.amount = parseInt(item.amount);
               const {
                 name,
                 serial,
