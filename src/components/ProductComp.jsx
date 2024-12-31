@@ -27,7 +27,7 @@ const ProductComp = ({ item, updateCart, updateTotal }) => {
 
   useEffect(() => {
     ipcRenderer.invoke("getCompInfo", { brandID, serial }).then((discount) => {
-      setDisc(discount);
+      setDisc(parseFloat(discount));
       setpPrice(
         currency(price).subtract(currency(price).multiply(disc).divide(100))
           .value
@@ -81,7 +81,7 @@ const ProductComp = ({ item, updateCart, updateTotal }) => {
           placeholder="İskonto"
           value={disc}
           onChange={(event) => {
-            setDisc(event.target.value);
+            setDisc(parseFloat(event.target.value));
           }}
           className="formArea"
         />

@@ -149,13 +149,4 @@ const Sales = () => {
   );
 };
 
-<div className="labelInfo">
-  <p>İsmi</p>
-  <p>Kodu</p>
-  <p>Fiyatı</p>
-  <p>İskontosu</p>
-  <p>Adet</p>
-  <p>Sepete Ekle</p>
-</div>;
-
 export default Sales;
