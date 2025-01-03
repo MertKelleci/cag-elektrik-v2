@@ -1,9 +1,11 @@
 {
     "appId":"com.MertKelleci.cag-elektrik",
-    "files":["dist-electron","public","src"],
+    "artifactName":"Çağ Elektrik",
+    "files":["dist-electron","public","dist-react","src"],
     "icon":"./public/icon.png",
     "mac": {
-        "target":"dmg"
+        "target":"dmg",
+        "identity": null
     },
     "linux":{
         "target":"AppImage",

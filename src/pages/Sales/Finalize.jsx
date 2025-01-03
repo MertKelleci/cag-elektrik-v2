@@ -69,7 +69,7 @@ const createProp = (cart, currentUser, info) => {
     },
     contact: {
       label: "Makbuz bilgileri:",
-      name: "Firma: ${info.company}",
+      name: "Firma: " + info.company,
       address: "Satin Alan: " + info.buyer,
       otherInfo: "Satis Yapan: " + currentUser.name,
     },
@@ -115,15 +115,15 @@ const createProp = (cart, currentUser, info) => {
       ]),
       additionalRows: [
         {
-          col1: `Total:`,
-          col2: `${info.total}`,
+          col1: `Total ₺:`,
+          col2: `${info.total}₺`,
           style: {
             fontSize: 14, //optional, default 12
           },
         },
         {
-          col1: "Yapilan Odeme:",
-          col2: `${info.payment}`,
+          col1: "Yapilan Odeme ₺:",
+          col2: `${info.payment}₺`,
           style: {
             fontSize: 10, //optional, default 12
           },

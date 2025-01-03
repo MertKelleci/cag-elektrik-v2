@@ -1,7 +1,9 @@
 {
   "name": "cag-elektrik-v2",
   "private": true,
-  "version": "0.0.0",
+  "author": "Mert Kelleci",
+  "description": "Cag Elektrik v2",
+  "version": "1.0.0",
   "type": "module",
   "main": "./public/main.js",
   "scripts": {
@@ -17,6 +19,7 @@
   },
   "dependencies": {
     "currency.js": "^2.0.4",
+    "electron-is-dev": "^3.0.1",
     "firebase": "^11.1.0",
     "framer-motion": "^11.15.0",
     "jspdf-invoice-template-nodejs": "^1.4.40",
@@ -37,7 +40,6 @@
     "cross-env": "^7.0.3",
     "electron": "^33.2.1",
     "electron-builder": "^25.1.8",
-    "electron-is-dev": "^3.0.1",
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
