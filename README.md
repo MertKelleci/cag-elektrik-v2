@@ -10,7 +10,7 @@ This is the desktop app I've developed for Çağ Elektrik.
     1. SASS for styling.
     1. Framer Motion for animations.
 
-[The video I based the basic of the project.](https://www.youtube.com/watch?v=fP-371MN0Ck&t=522s)
+[The video I based the basics of the project.](https://www.youtube.com/watch?v=fP-371MN0Ck&t=522s)
 
 Used to create the base React project, Electron was installed afterwards.
 
