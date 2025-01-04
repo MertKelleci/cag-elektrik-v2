@@ -24,6 +24,7 @@ const NewCompany = () => {
   const [company, setCompany] = useState({
     discount: 0,
     name: "",
+    serial: "",
   });
 
   function handleChange(event) {

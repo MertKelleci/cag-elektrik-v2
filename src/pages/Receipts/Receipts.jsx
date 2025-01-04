@@ -27,8 +27,8 @@ const Receipts = () => {
   const [loaded, setLoaded] = useState(false);
   const [fDate, setFDate] = useState(null);
   const [lDate, setLDate] = useState(null);
-
-  useEffect(() => {
+  let appliedList = [];
+  const handleList = (resetList) => {
     ipcRenderer
       .invoke("paginatedQuery", {
         collectionName: "receipts",
@@ -37,11 +37,16 @@ const Receipts = () => {
       })
       .then((items) => {
         if (!items.empty) {
-          items.amount = parseInt(items.amout);
-          setList([...list, ...items]);
+          resetList
+            ? (appliedList = [...items])
+            : (appliedList = [...list, ...items]);
+          setList(appliedList);
         }
         setLoaded(true);
       });
+  };
+  useEffect(() => {
+    handleList(false);
   }, [lastdoc]);
 
   const handleScroll = (event) => {
@@ -53,10 +58,12 @@ const Receipts = () => {
     }
   };
 
-  const refreshPage = () => {
-    setLastdoc(null);
-    setList([]);
+  const refreshPage = async () => {
     setLoaded(false);
+    if (lastdoc) {
+      setLastdoc(null);
+    }
+    handleList(true);
   };
 
   const handleSearch = (event) => {
