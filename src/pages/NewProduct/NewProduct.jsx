@@ -115,7 +115,6 @@ const NewProduct = () => {
               placeholder="Kod"
               name="pSerial"
               id="pSerial"
-              required
             />
             <label htmlFor="pSerial" className="form__label">
               Ürün Kodu

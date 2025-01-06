@@ -56,7 +56,7 @@ const ProductComp = ({ item, updateCart, updateTotal }) => {
         soldPrice: pPrice,
         amount,
         totalPrice: pPrice * amount,
-        id,
+        id: id ? id : "",
       });
       setAmount(0);
       ipcRenderer.send("getCompInfo", { brandID });
@@ -120,7 +120,7 @@ ProductComp.propTypes = {
     serial: PropTypes.string.isRequired,
     stored: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
   }).isRequired,
   updateCart: PropTypes.func.isRequired,
   updateTotal: PropTypes.func.isRequired,
