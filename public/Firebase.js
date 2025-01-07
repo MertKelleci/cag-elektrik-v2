@@ -20,12 +20,12 @@ import {
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAfHDoYAHk3ekiklTZmSC1t0HKghe2ZIW0",
-  authDomain: "cag-elektrik.firebaseapp.com",
-  projectId: "cag-elektrik",
-  storageBucket: "cag-elektrik.firebasestorage.app",
-  messagingSenderId: "853232143728",
-  appId: "1:853232143728:web:767e2f31bc38d1141293b5",
+  apiKey: YOUR_API_KEY,
+  authDomain: YOUR_AUTH_DOMAIN,
+  projectId: YOUR_PROJECT_ID,
+  storageBucket: YOUR_STORAGE_BUCKET,
+  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
+  appId: YOUR_APP_ID,
 };
 initializeApp(firebaseConfig);
 
